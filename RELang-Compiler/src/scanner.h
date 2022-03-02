@@ -1,0 +1,45 @@
+#ifndef RE_SCANNER_H
+#define RE_SCANNER_H
+
+#include "Common/common.h"
+
+typedef enum {
+    // Single-character tokens
+    RE_TOKEN_LEFT_PAREN, RE_TOKEN_RIGHT_PAREN,
+    RE_TOKEN_LEFT_BRACE, RE_TOKEN_RIGHT_BRACE,
+    RE_TOKEN_COMMA, RE_TOKEN_DOT, RE_TOKEN_MINUS, RE_TOKEN_PLUS,
+    RE_TOKEN_STAR, RE_TOKEN_SLASH, RE_TOKEN_SEMICOLON, RE_TOKEN_COLON,
+    RE_TOKEN_AT,
+
+    // One or two character tokens
+    RE_TOKEN_EQUAL, RE_TOKEN_EQUAL_EQUAL,
+    RE_TOKEN_BANG, RE_TOKEN_BANG_EQUAL,
+    RE_TOKEN_GREATER, RE_TOKEN_GREATER_EQUAL,
+    RE_TOKEN_LESS, RE_TOKEN_LESS_EQUAL,
+
+    // Literals
+    RE_TOKEN_IDENTIFIER, RE_TOKEN_STRING, RE_TOKEN_NUMBER,
+
+    // Keywords
+    RE_TOKEN_DEF, RE_TOKEN_PUBDEF, RE_TOKEN_STORAGE,
+    RE_TOKEN_IF, RE_TOKEN_ELSE, RE_TOKEN_FOR, RE_TOKEN_WHILE,
+    RE_TOKEN_TRUE, RE_TOKEN_FALSE,
+    RE_TOKEN_IMPORT,
+    RE_TOKEN_PROPERTY_SET, RE_TOKEN_PROPERTY_GET,
+    RE_TOKEN_NULL,
+    RE_TOKEN_RETURN,
+
+    RE_TOKEN_ERROR, RE_TOKEN_EOF
+} RE_TokenType;
+
+typedef struct {
+    RE_TokenType type;
+    const char* start;
+    u16 length;
+    u16 line;
+} RE_Token;
+
+void RE_InitScanner(const char* source);
+RE_Token RE_ScannerScanToken();
+
+#endif // RE_COMPILER_H

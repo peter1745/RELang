@@ -1,0 +1,8 @@
+------------------ Scanning / Lexing ------------------------
+A scanner (or lexer) is basically a tokenizer. It takes in a linear stream of characters, and converts them into tokens.
+
+------------------ Parsing ---------------------------------
+The parse takes the tokens from the scanning stage and builds syntax tree from them. The parse essentially generates the "grammar" of the language, and determines syntax errors.
+
+------------------ Static Analizer ----------------------------
+The static analizer 
